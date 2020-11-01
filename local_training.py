@@ -16,7 +16,7 @@ device = th.device("cpu")
 worker_id = sys.argv[1]
 batch_size = int(sys.argv[2])
 lr = 0.1
-epoch_num = 20
+epoch_num = 10
 
 KEEP_LABELS_DICT = {
     "alice": [0, 1, 2, 3],

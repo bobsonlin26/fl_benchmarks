@@ -6,10 +6,12 @@ import time
 hook = sy.TorchHook(torch)
 
 num = torch.tensor([1])
-alice = NodeClient(hook, "ws://172.16.179.20:6666" , id="alice")
+alice = NodeClient(hook, "ws://10.0.17.6:6666" , id="flvm-2")
 
-start_time = time.time()
-ptr_num = num.send(alice)
-end_time = time.time()
+for i in range(11):
 
-print("Duration:", end_time - start_time)
+    start_time = time.time()
+    ptr_num = num.send(alice)
+    end_time = time.time()
+
+    print("Duration:", end_time - start_time)

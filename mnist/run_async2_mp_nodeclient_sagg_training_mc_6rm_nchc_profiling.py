@@ -216,7 +216,7 @@ async def main():
     # worker_list = [alice, bob, charlie]
 
     worker_list = []
-    for i in range(2, 5):
+    for i in range(2, 8):
         worker = NodeClient(hook, "ws://"+flvm_ip[i]+":6666" , id="flvm-"+str(i))
         worker_list.append(worker)
 

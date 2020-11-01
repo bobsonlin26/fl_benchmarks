@@ -149,9 +149,9 @@ async def main():
     optimizer_args = {"lr" : lr}
 
     if ssl_args == "ssl_true":
-        alice = NodeClient(hook, "wss://172.16.179.20:6666" , id="alice")
+        alice = NodeClient(hook, "wss://10.0.17.6:6666" , id="alice")
     else:
-        alice = NodeClient(hook, "ws://172.16.179.20:6666" , id="alice")
+        alice = NodeClient(hook, "ws://10.0.17.6:6666" , id="alice")
 #     bob = NodeClient(hook, "ws://172.16.179.22:6667" , id="bob")
 #     charlie = NodeClient(hook, "ws://172.16.179.23:6668", id="charlie")
 #     med24 = NodeClient(hook, "ws://172.16.179.24:6669", id="med24")

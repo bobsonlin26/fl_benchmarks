@@ -20,7 +20,7 @@ class Net(sy.Plan):
         return F.log_softmax(x, dim=1)
 
 hook = sy.TorchHook(torch)
-alice = NodeClient(hook, "ws://172.16.179.20:6666" , id="alice")
+alice = NodeClient(hook, "ws://10.0.17.6:6666" , id="flvm-2")
 
 
 for i in range(21):
