@@ -118,7 +118,7 @@ def main():
     learning_rate = lr
     optimizer_args = {"lr" : lr}
 
-    alice = NodeClient(hook, "ws://172.16.179.20:6666" , id="alice")
+    alice = NodeClient(hook, "ws://10.0.17.6:6666" , id="alice")
     # bob = NodeClient(hook, "ws://172.16.179.21:6667" , id="bob")
     # charlie = NodeClient(hook, "ws://172.16.179.22:6668", id="charlie")
 

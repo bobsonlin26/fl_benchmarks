@@ -19,6 +19,7 @@ import numpy as np
 from torchvision import datasets
 from torchvision import transforms
 
+node_num = int(sys.argv[1])
 LOG_INTERVAL = 25
 logger = logging.getLogger("run_websocket_client")
 
@@ -56,8 +57,9 @@ class Net(sy.Plan):
         super(Net, self).__init__()
         self.conv1 = nn.Conv2d(1, 20, 5, 1)
         self.conv2 = nn.Conv2d(20, 50, 5, 1)
-        self.fc1 = nn.Linear(4 * 4 * 50, 500)
-        self.fc2 = nn.Linear(500, 10)
+        self.fc1 = nn.Linear(4 * 4 * 50, node_num)
+        self.fc2 = nn.Linear(node_num, 500)
+        self.fc3 = nn.Linear(500, 10)
 
     def forward(self, x):
         x = F.relu(self.conv1(x))
@@ -66,7 +68,8 @@ class Net(sy.Plan):
         x = F.max_pool2d(x, 2, 2)
         x = x.view(-1, 4 * 4 * 50)
         x = F.relu(self.fc1(x))
-        x = self.fc2(x)
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
         return F.log_softmax(x, dim=1)
 
 
@@ -104,7 +107,7 @@ async def main():
     # worker_list = [alice, bob, charlie]
 
     worker_list = []
-    for i in range(2, 2+12):
+    for i in range(2, 2+3):
         worker = NodeClient(hook, "ws://"+flvm_ip[i]+":6666" , id="flvm-"+str(i))
         worker_list.append(worker)
 
