@@ -8,13 +8,14 @@ import sys
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 import pkbar
 from torch.hub import load_state_dict_from_url
 import pdb
-import vgg
+# import vgg
 import syft as sy
+from syft.models import vgg
 hook = sy.TorchHook(torch)
 
 def select_samples(original_dataset, keep_labels):
@@ -69,7 +70,7 @@ net.build(torch.zeros([64, 3, 32, 32], dtype=torch.float).to(device))
 
 
 trainloader = torch.utils.data.DataLoader(dataset, batch_size=64,
-                                          shuffle=True, num_workers=2)
+                                          shuffle=True)
 train_loss = 0
 correct = 0
 total = 0
