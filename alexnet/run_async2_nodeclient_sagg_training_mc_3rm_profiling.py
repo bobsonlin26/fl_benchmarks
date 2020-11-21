@@ -20,7 +20,7 @@ from torchvision import datasets
 from torchvision import transforms
 
 from syft.frameworks.torch.fl.loss_fn import nll_loss
-from syft.models import vgg
+from syft.models import alexnet
 
 LOG_INTERVAL = 25
 logger = logging.getLogger("run_websocket_client")
@@ -148,7 +148,7 @@ def evaluate_model_on_worker(
 async def main():
     hook = sy.TorchHook(torch)
     device = torch.device("cpu")
-    model = vgg.vgg11(pretrained=False)
+    model = alexnet.AlexNet()
 
     # pdb.set_trace()
     model.build(torch.zeros([64, 3, 32, 32], dtype=torch.float).to(device))
